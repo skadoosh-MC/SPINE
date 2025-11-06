@@ -22,8 +22,6 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_percentage_error
 import math
-from growth import GrowthCalculator
-from scipy.integrate import simpson
 
 class Power:
     def __init__(self, kl, pkl, knl, pknl, h, omega_m, omega_b, ns, sigma_8):
