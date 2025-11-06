@@ -316,7 +316,7 @@ class XPower:
         gk = np.exp(-((tau - tau_prime) ** 2) / (2 * tau_s ** 2)) *2./ (np.sqrt(2 * np.pi) * tau_s)
         return gk
 
-    def get_xtilde(self, z=0):
+    def get_xtilde(self):
         """
         Calculates the smoothed growth-dependent parameter xtilde at z=0
         Returns
@@ -324,6 +324,7 @@ class XPower:
         xtilde: float
             value for xtilde for specified cosmology
         """
+        z = 0
         growth_obj = self.get_growth()
 
         eta = np.log(growth_obj.Dgrowth(z))
