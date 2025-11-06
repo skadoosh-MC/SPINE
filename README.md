@@ -8,8 +8,8 @@ Symbolic emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\
 * SPINE-X: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ and $\theta_X = \left [\omega_m, \\; f_b, \\; n_s, \\; \sigma_{12}, \\; n_L, \\; \widetilde{X} \right]$
 
 
-#Installation
+# Installation
 
-#Examples
+# Examples
 
-#Citation
+# Citation
