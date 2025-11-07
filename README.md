@@ -1,6 +1,7 @@
 ![SPINE Logo](assets/spine_logo_git.jpg)
 
-## Symbolic Power-spectrum INference Emulator: A symbolic model to predict the evolution of the ΛCDM nonlinear matter power spectrum
+## Symbolic Power-spectrum INference Emulator 
+### A symbolic model to predict the evolution of the ΛCDM nonlinear matter power spectrum
 
 Symbolic emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ in terms of the linear matter power spectrum $P_{\mathrm{L}}(k_{\mathrm{L}})$ and a few physically motivated cosmological parameters. We present two models to emulate $P_{\mathrm{NL}}(k_{\mathrm{NL}})$:
 
