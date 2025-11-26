@@ -25,8 +25,47 @@ import math
 from growth import GrowthCalculator
 from scipy.integrate import simpson
 
+#Bartlett et al. 2023 sigma8 to As emulator:
+def sigma8_to_As(sigma8, Om, Ob, h, ns, old_equation=False):
+    """
+    Compute the emulated conversion sigma8 -> As as given in Bartlett et al. 2023
+
+    Args:
+        :sigma8 (float): Root-mean-square density fluctuation when the linearly
+            evolved field is smoothed with a top-hat filter of radius 8 Mpc/h
+        :Om (float): The z=0 total matter density parameter, Omega_m
+        :Ob (float): The z=0 baryonic density parameter, Omega_b
+        :h (float): Hubble constant, H0, divided by 100 km/s/Mpc
+        :ns (float): Spectral tilt of primordial power spectrum
+        :old_equation (bool, default=False): Whether to use the version of the sigma8
+            emulator which appeared in v1 of the paper on arXiv (True) or the final
+            published version (and v2 on arXiv).
+
+    Returns:
+        :As (float): 10^9 times the amplitude of the primordial P(k)
+    """
+
+    if old_equation:
+        a = [0.161320734729, 0.343134609906, -
+             7.859274, 18.200232, 3.666163, 0.003359]
+        As = ((sigma8 - a[5]) / (a[2] * Ob + np.log(a[3] * Om)) / np.log(a[4] * h) -
+              a[1] * ns) / a[0]
+    else:
+        a = [0.51172, 0.04593, 0.73983, 1.56738, 1.16846, 0.59348, 0.19994, 25.09218,
+             9.36909, 0.00011]
+        f = (
+            a[0] * Om + a[1] * h + a[2] * (
+                (Om - a[3] * Ob)
+                * (np.log(a[4] * Om) - a[5] * ns)
+                * (ns + a[6] * h * (a[7] * Ob - a[8] * ns + np.log(a[9] * h)))
+            )
+        )
+        As = (sigma8 / f) ** 2
+
+    return As
+
 class XPower:
-    def __init__(self, kl, pkl, knl, pknl, h, omega_m, omega_b, ns, sigma_8):
+    def __init__(self, kl, pkl, h, omega_m, omega_b, ns, sigma_8):
         """
         Initialize the input parameters.
         Attributes
@@ -35,10 +74,6 @@ class XPower:
             Array of linear wavenumbers
         pkl: float
             Array of linear power spectrum values
-        knl: float
-            Array of nonlinear wavenumbers
-        pknl: float
-            Array of nonlinear power spectrum values
         h: float
             Reduced Hubble parameter
         omega_m: float
@@ -52,8 +87,6 @@ class XPower:
         """
         self.kl = kl
         self.pkl = pkl
-        self.knl = knl
-        self.pknl = pknl
         self.h = h
         self.omega_m = omega_m
         self.omega_b = omega_b
@@ -89,7 +122,7 @@ class XPower:
         #Divide by h to get in h Mpc
         rdrag = results.sound_horizon(additional_param.get_derived_params()['zdrag'])*(params_camb.H0/100)
 
-        return rdrag, sigma12, growthrate
+        return rdrag, sigma12
 
     def get_linear_nowiggle(self, range_imin = np.array([80,150]), range_imax = np.array([200, 300]), threshold = 0.04, offset = -25):
         """
@@ -114,7 +147,7 @@ class XPower:
             Linear power spectrum at kvec values
         f: scipy.interp1d object
         """
-        rdrag = self.set_cosmo()
+        rdrag, _ = self.set_cosmo()
         kr = np.linspace(0.005, 1000., 2**16)
 
 
@@ -225,32 +258,6 @@ class XPower:
 
         return pkdamp
 
-    def get_nonlinear_nowiggle(self):
-        """
-        Calculates the no wiggle nonlinear power spectrum.
-        Returns
-        ---------
-        interp_pknl: array
-            Nonlinear power spectrum
-        pknl_nw: array
-            No wiggle nonlinear power spectrum
-        """
-        kvec, pkl_nw, _, _ = self.get_linear_nowiggle()
-        pkdamp = self.get_linear_damped()
-
-        xnl = self.knl
-        ynl = self.pknl
-        fnl = sp.interp1d(xnl, ynl, kind='quadratic', fill_value='extrapolate')
-
-        #find pk at kvec
-        interp_pknl = fnl(kvec)
-
-        #Limit at >0
-        interp_pknl[interp_pknl < 0] = 0
-        pknl_nw = interp_pknl*(pkl_nw/pkdamp)
-
-        return interp_pknl, pknl_nw
-
     def get_additional_params(self, kmap):
         """
         Calculates parameters additionally needed in the final equation. Calculated via COLOSSUS.
@@ -273,3 +280,53 @@ class XPower:
         n_L = cosmo.matterPowerSpectrum(kmap/2, z = 0, derivative=True, model='eisenstein98_zb')
 
         return growthsupfactor, n_L
+        
+    def get_growth(self):
+        """
+        Calculates cosmological paramter instance required for xtilde caluclation
+        Retruns
+        -----------
+        growth: instance of GrowthCalculator
+        """
+        a_s = sigma8_to_As(self.sigma_8, self.omega_m, self.omega_b, self.h, self.ns)
+
+        cospar ={
+            'omega_c': (self.omega_m - self.omega_b)*self.h**2 ,
+            'omega_b': self.omega_b*self.h**2,
+            'n_s': self.ns,
+            'h': self.h,
+            'A_s': a_s*1e-9,
+            'w_0': -1.0,
+            'w_a': 0.0,
+            'omega_k': 0.0}
+
+        # define instance of GrowthCalculator
+        growth_val = GrowthCalculator(cospar)
+        return growth_val
+
+    def gaussian_kernel(self, tau, tau_prime, tau_s):
+        """
+        Computes a normalized Gaussian kernel for integration.
+        Returns
+        -------
+        gk: float
+            Gaussian Kernel for integration
+        """
+        gk = np.exp(-((tau - tau_prime) ** 2) / (2 * tau_s ** 2)) *2./ (np.sqrt(2 * np.pi) * tau_s)
+        return gk
+
+    def get_xtilde(self, z=0):
+        """
+        Calculates the smoothed growth-dependent parameter xtilde at z=0
+        Returns
+        --------
+        xtilde: float
+            value for xtilde for specified cosmology
+        """
+        growth_obj = self.get_growth()
+
+        eta = np.log(growth_obj.Dgrowth(z))
+        eta_vec = np.linspace(eta-0.5, eta, 300)
+        x_vec = growth_obj.X_tau(eta_vec)
+        xtilde = simpson(self.gaussian_kernel(eta, eta_vec, 0.12)*x_vec, eta_vec)
+        return xtilde
