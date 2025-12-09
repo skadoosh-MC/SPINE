@@ -12,6 +12,6 @@ Symbolic emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\
 
 # Installation
 
-# Quickstart & Examples
+# Quickstart
 
 # Citation
