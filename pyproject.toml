@@ -20,10 +20,14 @@ classifiers = [
 dependencies = [
     "numpy",
     "scipy",
+    "matplotlib",
+    "pandas",
+    "numba",
+    "astropy",
     "camb",
     "colossus",
-    "math",
-    "mpmath"
+    "mpmath",
+    "scikit-learn",
 ]
 
 [project.urls]
