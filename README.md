@@ -11,7 +11,7 @@ Emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL
   - $\Omega_b$ = Baryon density
   - $n_s$ = Scalar spectral index. Slope of the primordial power spectrum
   - $\sigma_8$ = Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius 8 Mpc/h
-  - $n_L$ = Slope of the late time power spectrum calculated as $\left(\frac{dlnP}{dlnk}|_{k = k_L/2}\right)$
+  - $n_L$ = Slope of the late time power spectrum calculated as $\frac{dlnP}{dlnk}|_{k = k_L/2}$
   - $g_a$ = Growth suppression factor calculated as $g_a = \frac{D(a)}{a}$, where $D(a)$ is the linear growth factor and $a$ is the scale factor.
 
 * <ins> SPINEX</ins>: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ and $\theta_X = \left [\omega_m, \\; f_b, \\; n_s, \\; \sigma_{12}, \\; n_L, \\; \widetilde{X} \right]$ where
