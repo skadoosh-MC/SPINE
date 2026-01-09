@@ -1,4 +1,4 @@
-![SPINE Logo](assets/spine_logo_git.jpg)
+![SPINE Logo](assets/spine_new_LOGO.jpg)
 
 ## Symbolic Power-spectrum INference Emulator 
 ### A symbolic model to predict the evolution of the ΛCDM nonlinear matter power spectrum
