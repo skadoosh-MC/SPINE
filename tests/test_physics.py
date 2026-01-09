@@ -1,5 +1,5 @@
 import numpy as np
-from main import emulate_pknl
+from Emulators.main import emulate_pknl
 
 def test_bao_rewiggling(linear_power):
     c = linear_power
