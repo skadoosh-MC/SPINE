@@ -1,6 +1,6 @@
-from emulators.class_spinex import Power, XPower
-from emulators.utils import dimensionless_pk, get_kl, power_spectrum
-from emulators.growth import GrowthCalculator
+from Emulators.class_spinex import Power, XPower
+from Emulators.utils import dimensionless_pk, get_kl, power_spectrum
+from Emulators.growth import GrowthCalculator
 import numpy as np
 from scipy.interpolate import UnivariateSpline
 import warnings
