@@ -21,7 +21,7 @@ from sklearn.metrics import mean_squared_error
 from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_percentage_error
 import math
-from growth import GrowthCalculator
+from Emulators.growth import GrowthCalculator
 from scipy.integrate import simpson
 from functools import lru_cache
 
