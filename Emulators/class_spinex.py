@@ -33,20 +33,21 @@ class Power:
         Initialize the input parameters.
         Attributes
         ----------
-        kl: float
-            Array of linear wavenumbers
-        pkl: float
-            Array of linear power spectrum values
+        kl: array
+            k [(h/Mpc)] for the linear power spectrum
+        pkl: array
+            The linear power spectrum [(Mpc/h)^3]
         h: float
-            Reduced Hubble parameter
-        omega_m: float
-            Total matter density
-        omega_b: float
-            Baryon density
+            Hubble constant, H0, divided by 100 km/s/Mpc 
+        Omegam: float
+            Matter density of the universe at z = 0
+        Omegab: float
+            Baryon denisty of the universe at z = 0
         ns: float
-            Spectral index ---> Slope of the primordial power spectrum
-        sigma_8: float
-            Variance of matter fluctuations in spheres of 8h^-1 Mpc
+            Spectral tilt of the primordial power spectrum 
+        sigma8: float
+            Root-mean-square density fluctuation when the linearly 
+            evolved field is smoothed with a top-hat filter of radius 8 Mpc/h
         """
         self.kl = kl
         self.pkl = pkl
@@ -103,7 +104,7 @@ class Power:
         Returns
         -----------
         rdrag: float
-            Sound horizon at the drag redshift in units of h^-1 Mpc
+            Sound horizon at the drag redshift in units of [(h/Mpc)]
         sigma12:
             Root-mean-square density fluctuation when the linearly evolved field is 
             smoothed with a top-hat filter of radius 12 Mpc
@@ -155,11 +156,11 @@ class Power:
         Returns
         ---------
         kvec: array
-            Array of wavenumbers normalised to the sound horizon
+            Array of wavenumbers [(h/Mpc)] normalised to the sound horizon
         pkl_nw: array
-            The no wiggle linear power spectrum
+            The no wiggle linear power spectrum [(Mpc/h)^3]
         interp_pk: array
-            Linear power spectrum at kvec values
+            Linear power spectrum at kvec values [(Mpc/h)^3]
         f: scipy.interp1d object
         """
         rdrag, _ = self.set_cosmo()
@@ -249,7 +250,7 @@ class Power:
         Retruns
         ---------
         pkdamp: array
-            Damped BAO linear theory power spectrum
+            Damped BAO linear theory power spectrum [(Mpc/h)^3]
         """
         sigmav = self.get_sigmav()
         kvec, pkl_nw, interp_pk, _ = self.get_linear_nowiggle()
@@ -268,7 +269,7 @@ class Power:
         Attributes
         ----------
         kmap: array
-            The mapped kvec values according to the Peacock & Dodds 1996 formalism
+            The mapped k [(h/Mpc)] values according to the Peacock & Dodds 1996 formalism
         Returns
         ----------
         growthsupfactor: float
