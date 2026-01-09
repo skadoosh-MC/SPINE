@@ -1,6 +1,6 @@
 import numpy as np
 import pytest
-from Emulators.main import emulate_pknl
+from emulators.main import emulate_pknl
 
 @pytest.mark.parametrize("model", ["spine", "spinex"])
 @pytest.mark.slow
