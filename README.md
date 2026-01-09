@@ -23,6 +23,6 @@ Emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL
 
 # Installation
 
-# Quickstart
+# Example
 
 # Citation
