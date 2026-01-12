@@ -5,9 +5,9 @@
 
 Emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of the linear matter power spectrum $P_{\mathrm{L}}(k_{\mathrm{L}})$ and cosmological parameters in the range $k = 1\times10^{-2} - 2 \\; Mpc^{-1}h$ at $z=0$. We present two models to emulate $P_{\mathrm{NL}}(k_{\mathrm{NL}})$:
 
-* <ins>SPINE </ins>: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta = \left [h, \\; \Omega_m, \\; \Omega_b, \\; n_s, \\; \sigma_8, \\; n_L, \\; g_a \right]$
+* ```spine```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta = \left [h, \\; \Omega_m, \\; \Omega_b, \\; n_s, \\; \sigma_8, \\; n_L, \\; g_a \right]$
 
-* <ins> SPINEX</ins>: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_m, \\; f_b, \\; n_s, \\; \sigma_{12}, \\; n_L, \\; \widetilde{X} \right]$
+* ```spinex```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_m, \\; f_b, \\; n_s, \\; \sigma_{12}, \\; n_L, \\; \widetilde{X} \right]$
 
 The parameter definitions are as follows
 
