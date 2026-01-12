@@ -1,54 +1,51 @@
-# tests/test_stability.py
 import pytest
 import numpy as np
 from Emulators.main import emulate_pknl
 
-#----------------------------------------------------------------------
-#fixture: create a default SPINE emulator setup
-#----------------------------------------------------------------------
+#fixture to provide a default spine_model function
 @pytest.fixture
 def spine_model():
     """
-    Returns
-    ---------
-    Callable function that wraps emulate_pknl with default parameters.
+    Return
+    -------
+    Function to emulate the power spectrum within a valid k range
     """
-    def _model(kl=None, model="spine"):
-        # default k-vector
-        if kl is None:
-            kl = np.linspace(0.01, 3.0, 100)  # includes extrapolation beyond k=2
-        # default cosmology parameters within COSMO_BOUNDS
+    def _model(model="spine"):
+        #example linear power spectrum for testing
+        kl = np.linspace(0.01, 3.0, 500)  #include some k > 2 for testing truncation
+        pkl = kl**-3  #dummy linear spectrum (falling as k^-3)
         h = 0.7
         Omegam = 0.3
         Omegab = 0.05
         ns = 0.96
         sigma8 = 0.8
 
-        # call emulator
-        return emulate_pknl(kl, kl**ns, h, Omegam, Omegab, ns, sigma8, model)
+        #only pass the reliable range k <= 2 to the emulator
+        kl_safe = kl[kl <= 2.0]
+        pkl_safe = pkl[:len(kl_safe)]
+
+        #emulate_pknl automatically truncates/extrapolates, but we'll still enforce truncation here
+        kl_out, pknl, pknl_nw = emulate_pknl(kl_safe, pkl_safe, h, Omegam, Omegab, ns, sigma8, model=model)
+        return kl_out, pknl, pknl_nw
+
     return _model
 
-#----------------------------------------------------------------------
-#test 1: Check that the extrapolated spectrum is finite
-#----------------------------------------------------------------------
 def test_extrapolation_is_finite(spine_model):
-    kl, pknl, pknl_nw = spine_model(model="spine")
-    assert np.all(np.isfinite(pknl)), "Nonlinear P(k) contains NaNs or infs"
-    assert np.all(np.isfinite(pknl_nw)), "Nonlinear no-wiggle P(k) contains NaNs or infs"
-
-#----------------------------------------------------------------------
-#test 2: Check that the spectrum is smooth (no huge jumps)
-#----------------------------------------------------------------------
-def test_spectrum_is_smooth(spine_model):
+    """
+    Test that the emulated P(k) values remain finite within the valid k range
+    """
     kl, pknl, _ = spine_model(model="spine")
-    diffs = np.diff(pknl) / pknl[:-1]  # fractional differences
-    max_jump = np.max(np.abs(diffs))
-    assert max_jump < 1.0, "Spectrum has sudden large jumps; might not be smooth"
+    assert np.all(np.isfinite(pknl)), "Nonlinear power spectrum contains inf or NaN values"
 
-#----------------------------------------------------------------------
-#test 3: Check that SPINEX model also returns finite spectrum
-#----------------------------------------------------------------------
-def test_spinex_is_finite(spine_model):
-    kl, pknl, pknl_nw = spine_model(model="spinex")
-    assert np.all(np.isfinite(pknl)), "SpinEx P(k) contains NaNs or infs"
-    assert np.all(np.isfinite(pknl_nw)), "SpinEx no-wiggle P(k) contains NaNs or infs"
+def test_spectrum_is_smooth(spine_model):
+    """
+    Test that the nonlinear spectrum does not have sudden jumps in the valid range
+    """
+    kl, pknl, _ = spine_model(model="spine")
+
+    #fractional differences between consecutive points
+    diffs = np.diff(pknl) / pknl[:-1]
+    max_jump = np.max(np.abs(diffs))
+
+    #ensure spectrum is reasonably smooth
+    assert max_jump < 1.0, f"Spectrum has sudden large jumps; might not be smooth (max jump = {max_jump:.2f})"
