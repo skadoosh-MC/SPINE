@@ -25,6 +25,7 @@ dependencies = [
     "scikit-learn",
 ]
 
+[tool.setuptools]
 packages = ["Emulators"]  # << This tells setuptools which folder to install
 
 [project.urls]
