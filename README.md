@@ -30,7 +30,19 @@ The function ```emulate_pknl``` provides outputs for $P_{\mathrm{NL}}(k_{\mathrm
 This methodology provides simple Python equations for smoothed, no-BAO, dimensionless nonlinear power spectra $\Delta^2_{NL}(k_{NL})$. Users have the option to copy and adapt both equations into their preferred programming language. 
 
 # Installation
+To install the emulator and its dependencies, run
+
+```
+git clone 
+pip install spine
+```
+
+Come back here to check for the ```spine``` Python package!
 
 # Example
+We have provided a working example in ```examples/spine_example.ipynb```. 
 
 # Citation
+If you use the SPINE emulators, please cite the following paper
+
+```Chauhan et al. 2026 (in prep)```
