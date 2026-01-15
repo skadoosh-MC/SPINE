@@ -1,3 +1,8 @@
+import warnings
+warnings.filterwarnings(
+    "once",
+    message="Input kl extends beyond SPINE/SPINEX emulation range"
+)
 from Emulators.class_spinex import Power, XPower
 from Emulators.utils import dimensionless_pk, get_kl, power_spectrum
 from Emulators.growth import GrowthCalculator
