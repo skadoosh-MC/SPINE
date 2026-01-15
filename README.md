@@ -33,8 +33,12 @@ This methodology provides simple Python equations for smoothed, no-BAO, dimensio
 To install the emulator and its dependencies, run
 
 ```
-git clone 
-pip install spine
+# Clone the repository
+git clone https://github.com/skadoosh-MC/SPINE.git
+cd SPINE
+
+# Install in editable mode
+pip install -e .
 ```
 
 Come back here to check for the ```spine``` Python package!
