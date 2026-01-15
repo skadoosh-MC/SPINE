@@ -41,7 +41,7 @@ cd SPINE
 pip install -e .
 ```
 
-Come back here to check for the ```spine``` Python package!
+Come back here to check for an update on the ```spine``` Python package!
 
 # Example
 We have provided a working example in ```examples/spine_example.ipynb```. 
@@ -50,3 +50,5 @@ We have provided a working example in ```examples/spine_example.ipynb```.
 If you use the SPINE emulators, please cite the following paper
 
 ```Chauhan et al. 2026 (in prep)```
+
+This software is available under the MIT license.
