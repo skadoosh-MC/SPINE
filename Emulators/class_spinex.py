@@ -14,7 +14,7 @@ import scipy.fft as fft
 from scipy import integrate
 from mpmath import quad
 from colossus.cosmology import cosmology
-from astropy import units as u
+# from astropy import units as u
 import camb
 from camb import model, initialpower
 from sklearn.metrics import mean_squared_error
