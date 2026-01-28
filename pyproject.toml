@@ -1,6 +1,6 @@
 [project]
 name = "spine_pk"
-version = "0.1.0"
+version = "0.1.1"
 description = "Symbolic models to predict the evolution of the ΛCDM nonlinear power spectrum"
 authors = [{name = "Manvi Chauhan", email = "m.chauhan-2018@hull.ac.uk"}]
 readme = "README.md"
