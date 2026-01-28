@@ -3,9 +3,9 @@ warnings.filterwarnings(
     "once",
     message="Input kl extends beyond SPINE/SPINEX emulation range"
 )
-from Emulators.class_spinex import Power, XPower
-from Emulators.utils import dimensionless_pk, get_kl, power_spectrum
-from Emulators.growth import GrowthCalculator
+from spine_pk.class_spinex import Power, XPower
+from spine_pk.utils import dimensionless_pk, get_kl, power_spectrum
+from spine_pk.growth import GrowthCalculator
 import numpy as np
 from scipy.interpolate import UnivariateSpline
 import warnings
