@@ -1,5 +1,5 @@
 [project]
-name = "spine-pk"
+name = "spine_pk"
 version = "0.1.0"
 description = "Symbolic models to predict the evolution of the ΛCDM nonlinear power spectrum"
 authors = [{name = "Manvi Chauhan", email = "m.chauhan-2018@hull.ac.uk"}]
@@ -26,7 +26,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["Emulators"]  # << This tells setuptools which folder to install
+packages = ["spine_pk"]  # << This tells setuptools which folder to install
 
 [project.urls]
-Homepage = "https://github.com/skadoosh_MC/SPINE"
+Homepage = "https://github.com/skadoosh-MC/SPINE.git"
