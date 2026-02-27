@@ -7,23 +7,23 @@ Emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL
 
 * ```spine```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta = \left [h, \\; \Omega_\mathrm{m}, \\; \Omega_\mathrm{b}, \\; n_\mathrm{s}, \\; \sigma_8, \\; n_\mathrm{L}, \\; g_\mathrm{a} \right]$
 
-* ```spinex```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_\mathrm{m}, \\; f_\mathrm{b}, \\; n_\mathrm{s}, \\; \sigma_{12}, \\; n_\mathrm{L}, \\; \widetilde{X} \right]$
+* ```spinex```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_\mathrm{m}, \\; f_\mathrm{b}, \\; n_\mathrm{s}, \\; \sigma_{12}, \\; n_\mathrm{L}, \\; \widetilde{x} \right]$
 
 The parameter definitions are as follows
 
 | Parameter | Name | Definition |
 |--------|------|------------|
 | $h$ | Reduced Hubble constant | $h = \dfrac{H_0}{100\ \mathrm{km\ s^{-1}\ Mpc^{-1}}}$ |
-| $\Omega_m$ | Matter density | Total matter density parameter |
-| $\Omega_b$ | Baryon density | Baryonic matter density parameter |
-| $n_s$ | Scalar spectral index | Slope of the primordial power spectrum |
+| $\Omega_\mathrm{m}$ | Matter density | Total matter density parameter |
+| $\Omega_\mathrm{b}$ | Baryon density | Baryonic matter density parameter |
+| $n_\mathrm{s}$ | Scalar spectral index | Slope of the primordial power spectrum |
 | $\sigma_8$ | Density fluctuation amplitude | Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius $8 \\; h^{-1} \\; \mathrm{Mpc}$ |
-| $n_L$ | Late-time power spectrum slope | $n_L = \frac{d\mathrm{ln}P}{d\mathrm{ln}k}$ for $k = \frac{k_\mathrm{L}}{2}$ |
-| $g_a$ | Growth suppression factor | $g_\mathrm{a} = \frac{D(a)}{a}$, where $D(a)$ is the linear growth factor and $a$ is the scale factor |
-| $\omega_m$ | Physical matter density | Physical matter density parameter |
+| $n_\mathrm{L}$ | Late-time power spectrum slope | $n_L = \frac{d\mathrm{ln}P}{d\mathrm{ln}k}$ for $k = \frac{k_\mathrm{L}}{2}$ |
+| $g_\mathrm{a}$ | Growth suppression factor | $g_\mathrm{a} = \frac{D(a)}{a}$, where $D(a)$ is the linear growth factor and $a$ is the scale factor |
+| $\omega_\mathrm{m}$ | Physical matter density | Physical matter density parameter |
 | $f_\mathrm{b}$ | Baryon fraction | $f_\mathrm{b} = \frac{\omega_\mathrm{b}}{\omega_\mathrm{m}}$ |
 | $\sigma_{12}$ | Density fluctuation amplitude | Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius $12\mathrm{Mpc}$ |
-| $\widetilde{X}$ | Nonlinear evolution parameter | Encodes information about the cosmological dependence of the nonlinear evolution of the density field. See [Sanchez et al. 2025](https://doi.org/10.48550/arXiv.2511.13826) for more details. |
+| $\widetilde{x}$ | Nonlinear evolution parameter | Encodes information about the cosmological dependence of the nonlinear evolution of the density field. See [Sanchez et al. 2025](https://doi.org/10.48550/arXiv.2511.13826) for more details. |
 
 The function ```emulate_pknl``` provides outputs for $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ and a smoothed, no-Baryon-Acoustic-Oscillation (BAO), nonlinear power spectrum $P_{\mathrm{NL}}^{nw}(k_{\mathrm{NL}})$ for the 
 
