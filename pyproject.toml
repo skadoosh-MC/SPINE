@@ -30,7 +30,7 @@ dependencies = [
 ]
 
 [tool.setuptools]
-where = ["spine_pk"]  # << This tells setuptools which folder to install
+packages = ["spine_pk"]  # << This tells setuptools which folder to install
 
 [project.urls]
 Homepage = "https://github.com/skadoosh-MC/SPINE.git"
