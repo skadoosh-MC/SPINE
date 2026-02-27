@@ -5,9 +5,9 @@
 
 Emulators for the nonlinear matter power spectrum $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of the linear matter power spectrum $P_{\mathrm{L}}(k_{\mathrm{L}})$ and cosmological parameters in the range $k = 0.01 - 2 \\; h \\; \mathrm{Mpc}^{-1}$ at $z=0$. We present two models to emulate $P_{\mathrm{NL}}(k_{\mathrm{NL}})$:
 
-* ```spine```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta = \left [h, \\; \Omega_m, \\; \Omega_b, \\; n_s, \\; \sigma_8, \\; n_L, \\; g_a \right]$
+* ```spine```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta = \left [h, \\; \Omega_\mathrm{m}, \\; \Omega_\mathrm{b}, \\; n_\mathrm{s}, \\; \sigma_8, \\; n_\mathrm{L}, \\; g_\mathrm{a} \right]$
 
-* ```spinex```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_m, \\; f_b, \\; n_s, \\; \sigma_{12}, \\; n_L, \\; \widetilde{X} \right]$
+* ```spinex```: Predicting $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ as a function of $P_{\mathrm{L}}(k_{\mathrm{L}})$ and $\theta_X = \left [\omega_\mathrm{m}, \\; f_\mathrm{b}, \\; n_\mathrm{s}, \\; \sigma_{12}, \\; n_\mathrm{L}, \\; \widetilde{X} \right]$
 
 The parameter definitions are as follows
 
@@ -17,17 +17,17 @@ The parameter definitions are as follows
 | $\Omega_m$ | Matter density | Total matter density parameter |
 | $\Omega_b$ | Baryon density | Baryonic matter density parameter |
 | $n_s$ | Scalar spectral index | Slope of the primordial power spectrum |
-| $\sigma_8$ | Density fluctuation amplitude | Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius $8 \mathrm{Mpc}/h$ |
-| $n_L$ | Late-time power spectrum slope | $n_L = \frac{dlnP}{dlnk}$ for $k = \frac{k_L}{2}$ |
-| $g_a$ | Growth suppression factor | $g_a = \frac{D(a)}{a}$, where $D(a)$ is the linear growth factor and $a$ is the scale factor |
+| $\sigma_8$ | Density fluctuation amplitude | Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius $8 \\; h^{-1} \\; \mathrm{Mpc}$ |
+| $n_L$ | Late-time power spectrum slope | $n_L = \frac{d\mathrm{ln}P}{d\mathrm{ln}k}$ for $k = \frac{k_\mathrm{L}}{2}$ |
+| $g_a$ | Growth suppression factor | $g_\mathrm{a} = \frac{D(a)}{a}$, where $D(a)$ is the linear growth factor and $a$ is the scale factor |
 | $\omega_m$ | Physical matter density | Physical matter density parameter |
-| $f_b$ | Baryon fraction | $f_b = \frac{\Omega_b}{\Omega_m}$ |
+| $f_\mathrm{b}$ | Baryon fraction | $f_\mathrm{b} = \frac{\omega_\mathrm{b}}{\omega_\mathrm{m}}$ |
 | $\sigma_{12}$ | Density fluctuation amplitude | Root-mean-square density fluctuation when the linearly evolved field is smoothed with a top-hat filter of radius $12\mathrm{Mpc}$ |
 | $\widetilde{X}$ | Nonlinear evolution parameter | Encodes information about the cosmological dependence of the nonlinear evolution of the density field. See [Sanchez et al. 2025](https://doi.org/10.48550/arXiv.2511.13826) for more details. |
 
 The function ```emulate_pknl``` provides outputs for $P_{\mathrm{NL}}(k_{\mathrm{NL}})$ and a smoothed, no-Baryon-Acoustic-Oscillation (BAO), nonlinear power spectrum $P_{\mathrm{NL}}^{nw}(k_{\mathrm{NL}})$ for the 
 
-This methodology provides simple Python equations for smoothed, no-BAO, dimensionless nonlinear power spectra $\Delta^2_{NL}(k_{NL})$. Users have the option to copy and adapt both equations into their preferred programming language. 
+This methodology provides simple Python equations for smoothed, no-BAO, dimensionless nonlinear power spectra $\Delta^2_{\mathrm{NL}}(k_{\mathrm{NL}})$. Users have the option to copy and adapt both equations into their preferred programming language. 
 
 # Installation
 To install the emulator and its dependencies, run
