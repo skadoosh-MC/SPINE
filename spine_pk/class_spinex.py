@@ -238,10 +238,13 @@ class Power:
         #the integrand will be the interpolated power spectrum values
         #integrate the power spectrum for each cosmology
         #sigmav_quad[0] = area under curve - sigmav_quad[1] gives error on calculation
-        # function = lambda kvec: f(kvec)
-        # k = np.logspace(-3, 1, 2000)
-        # pk = f(k)
-        sigmav = np.sqrt(simpson(pklnw, kvec) / (6*np.pi**2))  # σv = √(1/6π^2 ∫P(k) dk)
+       
+        # sigmav = np.sqrt(simpson(pklnw, kvec) / (6*np.pi**2))  # σv = √(1/6π^2 ∫P(k) dk)
+        # return sigmav
+        
+        function = lambda kvec: f(kvec) * (1/(6*np.pi**2))    
+        sigmav_quad = integrate.quad(function, 0.005, 10, limit=10000)
+        sigmav = np.sqrt(sigmav_quad[0])
         return sigmav
 
     def get_linear_damped(self):
