@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "spine_pk"
-version = "0.1.2"
+version = "0.1.3"
 description = "Symbolic models to predict the evolution of the ΛCDM nonlinear power spectrum"
 authors = [{name = "Manvi Chauhan", email = "m.chauhan-2018@hull.ac.uk"}]
 readme = "README.md"
