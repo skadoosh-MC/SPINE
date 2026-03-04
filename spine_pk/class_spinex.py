@@ -22,6 +22,7 @@ from sklearn.metrics import r2_score
 from sklearn.metrics import mean_absolute_percentage_error
 import math
 from spine_pk.growth import GrowthCalculator
+from scipy.integrate import simpson
 
 class Power:
     kmin = 1e-2
