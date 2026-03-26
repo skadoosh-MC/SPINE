@@ -132,9 +132,9 @@ def f_spinex(deltal, omegam, fb, ns, sigma12, nL, X):
     full: array
         The dewiggled dimensionless nonlinear power spectrum prediction from SPINEX
     '''
-    k1 = (((ns**X + fb**(-0.154) - 0.652)**sigma12 + X + fb)*X)**(nL**2)
+    k1 = (((ns**X + fb**(-0.154) - (0.652*deltal*X))**sigma12 + X + fb)*X)**(nL**2)
     k2 = (fb - X**(-15.169))/(sigma12)
-    k = 0.085*(k1 + k2)
+    k = 0.085*deltal*(k1 + k2)
     e = (X + fb - 0.339)/(deltal**2)
     term2 = ((deltal**4.305)/(ns)) * (k + e)
     full = deltal + term2
