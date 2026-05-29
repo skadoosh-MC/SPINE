@@ -96,11 +96,11 @@ def f_spine(Delta_l, h, Omegam, Omegab, ns, sigma8, nl, ga):
     full: array
         The dewiggled dimensionless nonlinear power spectrum from SPINE
     '''
-    a1 = 162.45 + ((-nl**3 - (3.76/Delta_l))/(Omegab-Omegam))
-    PI = -nl + (((9.13**nl * ns)**Delta_l * a1)/(sigma8*ga))
-    fdel = (4.16**nl * ga**ns * (PI**Delta_l + 4.24))**nl
-    fdel2 = Delta_l*(fdel-0.16) - nl
-    full = Delta_l + (Delta_l**2.64 * fdel2)
+    a1 = 162.45142 + ((-nl**3 - (3.7603955/Delta_l))/(Omegab-Omegam))
+    PI = -nl + (((9.130255**nl * ns)**Delta_l * a1)/(sigma8*ga))
+    fdel = (4.1638346**nl * ga**ns * (PI**Delta_l + 4.240977))**nl
+    fdel2 = Delta_l*(fdel-0.16180302) - nl
+    full = Delta_l + (Delta_l**2.6436863 * fdel2)
 
     return full
 
@@ -132,11 +132,11 @@ def f_spinex(deltal, omegam, fb, ns, sigma12, nL, X):
     full: array
         The dewiggled dimensionless nonlinear power spectrum prediction from SPINEX
     '''
-    k1 = (((ns**X + fb**(-0.154) - (0.652*deltal*X))**sigma12 + X + fb)*X)**(nL**2)
-    k2 = (fb - X**(-15.169))/(sigma12)
-    k = 0.085*deltal*(k1 + k2)
-    e = (X + fb - 0.339)/(deltal**2)
-    term2 = ((deltal**4.305)/(ns)) * (k + e)
+    k1 = (((ns**X + fb**(-0.15257905) - (0.6520572*deltal*X))**sigma12 + X + fb)*X)**(nL**2)
+    k2 = (fb - X**(-15.168509))/(sigma12)
+    k = 0.08538898*deltal*(k1 + k2)
+    e = (X + fb - 0.33910105)/(deltal**2)
+    term2 = ((deltal**4.3048625)/(ns)) * (k + e)
     full = deltal + term2
 
     return full
