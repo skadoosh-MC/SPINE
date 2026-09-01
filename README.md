@@ -49,6 +49,6 @@ We have provided a working example in ```examples/spine_example.ipynb```.
 # Citation
 If you use the SPINE emulators, please cite the following paper
 
-```Chauhan et al. 2026 (submitted)```
+```Chauhan et al. 2026 (Accepted for publication in MNRAS)```
 
 This software is available under the MIT license.
