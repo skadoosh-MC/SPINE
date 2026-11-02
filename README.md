@@ -49,6 +49,22 @@ We have provided a working example in ```examples/spine_example.ipynb```.
 # Citation
 If you use the SPINE emulators, please cite the following paper
 
-```Chauhan et al. 2026 (Accepted for publication in MNRAS)```
+```
+@article{spine_pk,
+    author = {Chauhan, Manvi and Farrow, Daniel J and Sánchez, Ariel G and Pimbblet, Kevin A and Asgari, Marika and Benoit, David M},
+    title = {SPINE: symbolic models to predict the evolution of the ΛCDM non-linear power spectrum},
+    journal = {Monthly Notices of the Royal Astronomical Society},
+    volume = {552},
+    number = {1},
+    pages = {stag1647},
+    year = {2026},
+    month = {10},
+    abstract = {We present SPINE and SPINEX, a pair of analytical emulators developed to predict the non-linear power spectrum based on its linear counterpart and several essential cosmological parameters within the range of \$0.01\\,\\,h\\,\\,\\mathrm\{Mpc\}^\{-1\} \\lt k\\lt 2\\,\\,h\\,\\,\\mathrm\{Mpc\}^\{-1\}\$. The primary difference between the two models is their parametrization. Our methodology is grounded in the mapping originally proposed by J. A. Peacock and S. J. Dodds. Both models are defined by clear mathematical expressions derived from symbolic regression, a machine learning technique that utilizes genetic programming to identify analytical equations that accurately represent the underlying data. This approach provides a more interpretable and efficient alternative to conventional numerical methods that should also exhibit superior extrapolation behaviour beyond the training range. The emulators have been trained on the Lambda cold dark matter (\$\\Lambda\$CDM) Quijote Latin Hypercube simulations. We provide fits for both emulators across three distinct scenarios: cosmologies within 20\$\\sigma\$ of the Planck-2018 observations, a designated fiducial cosmology, and a broader range of cosmologies sampled from the Quijote simulations. Our findings indicate that SPINE and SPINEX maintain an accuracy of better than 5 per cent in the majority of cases. These emulators provide a rapid alternative to numerical methods, and future initiatives will focus on developing expressions that incorporate galaxy bias and redshift-space distortions. This advancement aims to enhance the modelling of redshift space power spectra across multiple redshifts, enabling their application in large-scale cosmological surveys.},
+    issn = {0035-8711},
+    doi = {10.1093/mnras/stag1647},
+    url = {https://doi.org/10.1093/mnras/stag1647},
+    eprint = {https://academic.oup.com/mnras/article-pdf/552/1/stag1647/70885304/stag1647.pdf},
+}
+```
 
 This software is available under the MIT license.
