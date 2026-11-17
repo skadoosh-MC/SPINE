@@ -1,6 +1,6 @@
 import pytest
 import numpy as np
-from Emulators.main import emulate_pknl
+from spine_pk.main import emulate_pknl
 
 #fixture to provide a default spine_model function
 @pytest.fixture
