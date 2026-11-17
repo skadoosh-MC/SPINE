@@ -1,0 +1,29 @@
+# Matplotlib Style Sheet for SPINE/SPINEX Plots
+
+# Font settings
+text.usetex          : False
+font.size            : 20
+font.family          : DejaVu Serif
+mathtext.fontset     : cm 
+mathtext.fallback    : cm
+font.weight          : normal
+axes.labelweight     : normal
+
+# Axes and Ticks
+axes.linewidth       : 1.67
+xtick.major.width    : 2.0
+ytick.major.width    : 2.0
+xtick.minor.width    : 2.0
+ytick.minor.width    : 2.0
+xtick.major.size     : 8
+ytick.major.size     : 8
+xtick.minor.size     : 4
+ytick.minor.size     : 4
+xtick.major.pad      : 10
+ytick.major.pad      : 10
+xtick.direction      : in
+ytick.direction      : in
+xtick.top            : True
+ytick.right          : True
+xtick.minor.visible  : True
+ytick.minor.visible  : True
