@@ -219,8 +219,7 @@ def get_spectrum(kl, pkl, h, Omegam, Omegab, ns, sigma8, model, k_max = 2.0):
     deltal = dimensionless_pk(kvec, pklnw)
 
     #get the growth factor and the slope of the late time power spectrum at the mapped k
-    kmapped = get_kl(kvec, pklnw)
-    ga, nl = class_instance.get_additional_params(kmapped)
+    ga, nl = class_instance.get_additional_params(kvec)
 
     #get the prediction for the nonlinear nowiggle power spectrum
     if model == 'spine':
